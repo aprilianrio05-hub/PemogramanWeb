@@ -1,26 +1,18 @@
 <?php
 
+use App\Http\Controllers\SuratKeluarController;
 use App\Http\Controllers\SuratMasukController;
 use Illuminate\Support\Facades\Route;
 
+// Halaman Utama / Dashboard (menggunakan layouts/dashboard.blade.php)
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('layouts.dashboard');
+})->name('dashboard');
 
-// paramater sederhana
-Route::get('/surat-masuk', function () {
-    return 'Halaman Surat Masuk';
-});
-
-// parameter dengan ID
-Route::get('/surat-masuk/{id}', function ($id) {
-    return 'Detail Surat Masuk dengan ID: '.$id;
-});
-
-// cek named route
-// php artisan route:list
-
-Route::get('/surat-masuk', [SuratMasukController::class, 'index']);
-Route::get('/surat-masuk/{id}', [SuratMasukController::class, 'show']);
+// Route untuk Surat Masuk
 Route::get('/surat-masuk', [SuratMasukController::class, 'index'])->name('surat-masuk.index');
 Route::get('/surat-masuk/{id}', [SuratMasukController::class, 'show'])->name('surat-masuk.show');
+
+// Route untuk Surat Keluar
+Route::get('/surat-keluar', [SuratKeluarController::class, 'index'])->name('surat-keluar.index');
+Route::get('/surat-keluar/{id}', [SuratKeluarController::class, 'show'])->name('surat-keluar.show');

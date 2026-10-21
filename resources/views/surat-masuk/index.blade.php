@@ -1,56 +1,41 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Surat Masuk</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-    
+@extends('layouts.app')
 
-    <h2>Daftar Surat Masuk</h2>
+@section('title', 'Daftar Surat Masuk')
 
-    <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Nomor Surat</th>
-                <th>Tanggal</th>
-                <th>Pengirim</th>
-                <th>Perihal</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($suratMasuk as $item)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item['nomor_surat'] }}</td>
-                    <td>{{ $item['tanggal'] }}</td>
-                    <td>{{ $item['pengirim'] }}</td>
-                    <td>{{ $item['perihal'] }}</td>
-                    <td>
-                        <a href="/surat-masuk/{{ $item['id'] }}">Detail Surat</a>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-
-</body>
-</html>
+@section('content')
+<div class="card shadow-sm">
+    <div class="card-header bg-white py-3">
+        <h4 class="mb-0 text-primary">Daftar Surat Masuk</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>No</th>
+                        <th>Nomor Surat</th>
+                        <th>Tanggal</th>
+                        <th>Pengirim</th>
+                        <th>Perihal</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($suratMasuk as $item)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $item['nomor_surat'] }}</td>
+                            <td>{{ $item['tanggal'] }}</td>
+                            <td>{{ $item['pengirim'] }}</td>
+                            <td>{{ $item['perihal'] }}</td>
+                            <td>
+                                <a href="{{ route('surat-masuk.show', $item['id']) }}" class="btn btn-info btn-sm text-white">Detail</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@endsection
