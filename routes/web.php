@@ -9,9 +9,9 @@ Route::get('/', function () {
     return view('layouts.dashboard');
 })->name('dashboard');
 
-// Route untuk Surat Masuk
-Route::get('/surat-masuk', [SuratMasukController::class, 'index'])->name('surat-masuk.index');
-Route::get('/surat-masuk/{id}', [SuratMasukController::class, 'show'])->name('surat-masuk.show');
+// Route untuk Surat Masuk (CRUD)
+Route::resource('surat-masuk', SuratMasukController::class)
+    ->parameters(['surat-masuk' => 'id']);
 
 // Route untuk Surat Keluar
 Route::get('/surat-keluar', [SuratKeluarController::class, 'index'])->name('surat-keluar.index');

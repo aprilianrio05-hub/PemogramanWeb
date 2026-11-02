@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class IncommingLetter extends Model
 {
-    //
+    protected $fillable = [
+        'nomor_surat',
+        'tanggal',
+        'pengirim',
+        'perihal',
+        'keterangan',
+    ];
 }
