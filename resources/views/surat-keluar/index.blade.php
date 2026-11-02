@@ -11,28 +11,28 @@
         <div class="table-responsive">
             <table class="table table-bordered table-striped align-middle">
                 <thead class="table-dark">
-                    <tr>
-                        <th>No</th>
-                        <th>Nomor Surat</th>
-                        <th>Tanggal</th>
-                        <th>Tujuan</th>
-                        <th>Perihal</th>
-                        <th>Aksi</th>
-                    </tr>
+                   <tr>
+                <th>ID</th>
+                <th>Nomor Surat</th>
+                <th>Tanggal</th>
+                <th>Pengirim</th>
+                <th>Perihal</th>
+                <th>Aksi</th>
+            </tr>
                 </thead>
                 <tbody>
                     @foreach ($suratKeluar as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item['nomor_surat'] }}</td>
-                            <td>{{ $item['tanggal'] }}</td>
-                            <td>{{ $item['tujuan'] }}</td>
-                            <td>{{ $item['perihal'] }}</td>
+                            <td>{{ $item->nomor_surat }}</td>
+                            <td>{{ $item->tanggal }}</td>
+                            <td>{{ $item->pengirim }}</td>
+                            <td>{{ $item->perihal }}</td>
                             <td>
-                                <a href="{{ route('surat-keluar.show', $item['id']) }}" class="btn btn-info btn-sm text-white">Detail</a>
+                                <a href="{{ route('surat-keluar.show', $item->id) }}" class="btn btn-info btn-sm text-white">Detail</a>
                             </td>
                         </tr>
-                    @endforeach
+                    @endforeach 
                 </tbody>
             </table>
         </div>

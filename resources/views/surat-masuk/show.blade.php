@@ -21,23 +21,23 @@
                         <table class="table table-bordered">
                             <tr>
                                 <th style="width: 30%;">ID</th>
-                                <td>{{ $surat['id'] }}</td>
+                                <td>{{ $surat->id }}</td>
                             </tr>
                             <tr>
                                 <th>Nomor Surat</th>
-                                <td>{{ $surat['nomor_surat'] }}</td>
+                                <td>{{ $surat->nomor_surat }}</td>
                             </tr>
                             <tr>
                                 <th>Tanggal</th>
-                                <td>{{ $surat['tanggal'] }}</td>
+                                <td>{{ $surat->tanggal }}</td>
                             </tr>
                             <tr>
                                 <th>Pengirim</th>
-                                <td>{{ $surat['pengirim'] }}</td>
+                                <td>{{ $surat->pengirim }}</td>
                             </tr>
                             <tr>
                                 <th>Perihal</th>
-                                <td>{{ $surat['perihal'] }}</td>
+                                <td>{{ $surat->perihal }}</td>
                             </tr>
                         </table>
                     </div>

@@ -21,18 +21,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($suratMasuk as $item)
+                    @forelse ($suratmasuk as $item)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item['nomor_surat'] }}</td>
-                            <td>{{ $item['tanggal'] }}</td>
-                            <td>{{ $item['pengirim'] }}</td>
-                            <td>{{ $item['perihal'] }}</td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->nomor_surat }}</td>
+                            <td>{{ $item->tanggal }}</td>
+                            <td>{{ $item->pengirim }}</td>
+                            <td>{{ $item->perihal }}</td>
                             <td>
-                                <a href="{{ route('surat-masuk.show', $item['id']) }}" class="btn btn-info btn-sm text-white">Detail</a>
+                                <a href="{{ route('surat-masuk.show', $item->id) }}">Detail Surat</a>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td>Belum ada data surat masuk.</td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
