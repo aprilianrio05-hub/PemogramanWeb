@@ -13,6 +13,6 @@ Route::get('/', function () {
 Route::resource('surat-masuk', SuratMasukController::class)
     ->parameters(['surat-masuk' => 'id']);
 
-// Route untuk Surat Keluar
-Route::get('/surat-keluar', [SuratKeluarController::class, 'index'])->name('surat-keluar.index');
-Route::get('/surat-keluar/{id}', [SuratKeluarController::class, 'show'])->name('surat-keluar.show');
+// Route untuk Surat Keluar (CRUD)
+Route::resource('surat-keluar', SuratKeluarController::class)
+    ->parameters(['surat-keluar' => 'id']);

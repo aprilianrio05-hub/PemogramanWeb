@@ -14,7 +14,7 @@
                 <table class="table table-bordered">
                     <tr>
                         <th style="width: 30%;">ID</th>
-                        <td>{{ $surat['id'] }}</td>
+                        <td>{{ $surat->id }}</td>
                     </tr>
                     <tr>
                         <th>Nomor Surat</th>
@@ -25,14 +25,20 @@
                         <td>{{ $surat->tanggal }}</td>
                     </tr>
                     <tr>
-                        <th>Pengirim</th>
-                        <td>{{ $surat->pengirim }}</td>
+                        <th>Tujuan</th>
+                        <td>{{ $surat->tujuan }}</td>
                     </tr>
                     <tr>
                         <th>Perihal</th>
                         <td>{{ $surat->perihal }}</td>
                     </tr>
+                    <tr>
+                        <th>Keterangan</th>
+                        <td>{{ $surat->keterangan ?? '-' }}</td>
+                    </tr>
                 </table>
+
+                <a href="{{ route('surat-keluar.edit', $surat->id) }}" class="btn btn-warning btn-sm">Edit</a>
             </div>
         </div>
     </div>
