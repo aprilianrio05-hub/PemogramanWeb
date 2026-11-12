@@ -6,7 +6,10 @@
 <div class="card shadow-sm">
     <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
         <h4 class="mb-0 text-primary">Daftar Surat Keluar</h4>
-        <a href="{{ route('surat-keluar.create') }}" class="btn btn-primary btn-sm">+ Tambah Surat</a>
+
+        @can('manage-letters')
+            <a href="{{ route('surat-keluar.create') }}" class="btn btn-primary btn-sm">+ Tambah Surat</a>
+        @endcan
     </div>
     <div class="card-body">
 
@@ -36,15 +39,18 @@
                             <td>{{ $item->perihal }}</td>
                             <td>
                                 <a href="{{ route('surat-keluar.show', $item->id) }}" class="btn btn-info btn-sm text-white">Detail</a>
-                                <a href="{{ route('surat-keluar.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
 
-                                <form action="{{ route('surat-keluar.destroy', $item->id) }}"
-                                      method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm"
-                                            onclick="return confirm('Hapus surat ini?')">Hapus</button>
-                                </form>
+                                @can('manage-letters')
+                                    <a href="{{ route('surat-keluar.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+
+                                    <form action="{{ route('surat-keluar.destroy', $item->id) }}"
+                                          method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Hapus surat ini?')">Hapus</button>
+                                    </form>
+                                @endcan
                             </td>
                         </tr>
                     @empty

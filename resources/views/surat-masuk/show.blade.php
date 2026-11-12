@@ -38,7 +38,9 @@
                     </tr>
                 </table>
 
-                <a href="{{ route('surat-masuk.edit', $surat->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                @can('manage-letters')
+                    <a href="{{ route('surat-masuk.edit', $surat->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                @endcan
             </div>
         </div>
     </div>

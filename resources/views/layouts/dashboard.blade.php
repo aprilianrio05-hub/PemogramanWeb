@@ -10,7 +10,12 @@
             <p class="lead">Sistem Informasi Pengelolaan Surat Masuk Fakultas.</p>
             <hr class="my-4">
             <p>Silakan akses menu di bawah ini atau melalui navigasi atas untuk melihat data surat masuk.</p>
-            <a class="btn btn-primary btn-lg" href="{{ route('surat-masuk.index') }}" role="button">Kelola Surat Masuk</a>
+
+            @can('manage-letters')
+                <a class="btn btn-primary btn-lg" href="{{ route('surat-masuk.index') }}" role="button">Kelola Surat Masuk</a>
+            @else
+                <a class="btn btn-primary btn-lg" href="{{ route('surat-masuk.index') }}" role="button">Lihat Surat Masuk</a>
+            @endcan
         </div>
     </div>
 </div>

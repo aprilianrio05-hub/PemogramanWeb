@@ -17,7 +17,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
                     </li>
@@ -27,6 +27,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('surat-keluar.index') }}">Data Surat Keluar</a>
                     </li>
+
+                    @auth
+                        <li class="nav-item">
+                            <span class="navbar-text ms-lg-3 me-2">Masuk sebagai: {{ auth()->user()->name }}</span>
+                        </li>
+                        <li class="nav-item">
+                            <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                                @csrf
+                                <button type="submit" class="btn btn-light btn-sm">Keluar</button>
+                            </form>
+                        </li>
+                    @endauth
                 </ul>
             </div>
         </div>
