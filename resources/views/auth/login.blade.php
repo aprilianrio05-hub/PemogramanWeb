@@ -4,44 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login SIM-Surat</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-light">
-    <div class="container">
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-5">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-primary text-white">
-                        <h4 class="mb-0">Login SIM-Surat</h4>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('login.submit') }}">
-                            @csrf
+<body class="min-h-screen bg-gray-100 text-gray-800 antialiased">
+    <div class="flex min-h-screen items-center justify-center px-4">
+        <div class="w-full max-w-md overflow-hidden rounded-xl bg-white shadow-md">
 
-                            <div class="mb-3">
-                                <label class="form-label">Email</label>
-                                <input type="email" name="email"
-                                       class="form-control @error('email') is-invalid @enderror"
-                                       value="{{ old('email') }}">
-                                @error('email')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Password</label>
-                                <input type="password" name="password"
-                                       class="form-control @error('password') is-invalid @enderror">
-                                @error('password')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <button type="submit" class="btn btn-primary w-100">Masuk</button>
-                        </form>
-                    </div>
-                </div>
+            <div class="bg-blue-600 px-6 py-4">
+                <h1 class="text-xl font-semibold text-white">Login SIM-Surat</h1>
             </div>
+
+            <form method="POST" action="{{ route('login.submit') }}" class="space-y-5 p-6">
+                @csrf
+
+                <div>
+                    <label class="mb-1 block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" name="email" value="{{ old('email') }}"
+                           class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500
+                                  @error('email') border-red-500 @else border-gray-300 @enderror">
+                    @error('email')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label class="mb-1 block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" name="password"
+                           class="w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500
+                                  @error('password') border-red-500 @else border-gray-300 @enderror">
+                    @error('password')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <button type="submit"
+                        class="w-full rounded-lg bg-blue-600 py-2.5 font-medium text-white hover:bg-blue-700">
+                    Masuk
+                </button>
+            </form>
         </div>
     </div>
 </body>

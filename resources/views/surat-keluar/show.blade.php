@@ -3,45 +3,50 @@
 @section('title', 'Detail Surat Keluar')
 
 @section('content')
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                <h4 class="mb-0">Detail Surat Keluar</h4>
-                <a href="{{ route('surat-keluar.index') }}" class="btn btn-light btn-sm">Kembali</a>
-            </div>
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <tr>
-                        <th style="width: 30%;">ID</th>
-                        <td>{{ $surat->id }}</td>
-                    </tr>
-                    <tr>
-                        <th>Nomor Surat</th>
-                        <td>{{ $surat->nomor_surat }}</td>
-                    </tr>
-                    <tr>
-                        <th>Tanggal</th>
-                        <td>{{ $surat->tanggal }}</td>
-                    </tr>
-                    <tr>
-                        <th>Tujuan</th>
-                        <td>{{ $surat->tujuan }}</td>
-                    </tr>
-                    <tr>
-                        <th>Perihal</th>
-                        <td>{{ $surat->perihal }}</td>
-                    </tr>
-                    <tr>
-                        <th>Keterangan</th>
-                        <td>{{ $surat->keterangan ?? '-' }}</td>
-                    </tr>
-                </table>
+<div class="mx-auto max-w-3xl">
+    <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+        <div class="flex items-center justify-between bg-blue-600 px-6 py-4">
+            <h4 class="text-xl font-semibold text-white">Detail Surat Keluar</h4>
+            <a href="{{ route('surat-keluar.index') }}"
+               class="rounded-lg bg-white px-3 py-1.5 text-sm font-medium text-blue-700 hover:bg-blue-50">Kembali</a>
+        </div>
 
-                @can('manage-letters')
-                    <a href="{{ route('surat-keluar.edit', $surat->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                @endcan
+        <div class="p-6">
+            <div class="overflow-hidden rounded-lg border border-gray-200">
+                <table class="min-w-full divide-y divide-gray-200 text-sm">
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <th class="w-1/3 bg-gray-50 px-4 py-3 text-left font-semibold">ID</th>
+                            <td class="px-4 py-3">{{ $surat->id }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-gray-50 px-4 py-3 text-left font-semibold">Nomor Surat</th>
+                            <td class="px-4 py-3">{{ $surat->nomor_surat }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-gray-50 px-4 py-3 text-left font-semibold">Tanggal</th>
+                            <td class="px-4 py-3">{{ $surat->tanggal }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-gray-50 px-4 py-3 text-left font-semibold">Tujuan</th>
+                            <td class="px-4 py-3">{{ $surat->tujuan }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-gray-50 px-4 py-3 text-left font-semibold">Perihal</th>
+                            <td class="px-4 py-3">{{ $surat->perihal }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-gray-50 px-4 py-3 text-left font-semibold">Keterangan</th>
+                            <td class="px-4 py-3">{{ $surat->keterangan ?? '-' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+
+            @can('manage-letters')
+                <a href="{{ route('surat-keluar.edit', $surat->id) }}"
+                   class="mt-4 inline-block rounded bg-amber-400 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-amber-500">Edit</a>
+            @endcan
         </div>
     </div>
 </div>
